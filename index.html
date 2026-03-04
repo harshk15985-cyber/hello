@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi Harsh 🎨</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #ff4e50, #f9d423, #24c6dc, #abecd6);
+    background-size: 400% 400%;
+    animation: gradientBG 8s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+/* Moving Background */
+@keyframes gradientBG {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Glowing Text */
+h1{
+    position:absolute;
+    font-size:65px;
+    color:white;
+    text-shadow:0 0 20px #fff,0 0 40px yellow;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff,0 0 20px #f0f;}
+    to{ text-shadow:0 0 30px #fff,0 0 60px #0ff;}
+}
+
+/* Credit Text */
+.credit{
+    position:absolute;
+    bottom:20px;
+    font-size:18px;
+    color:white;
+    letter-spacing:2px;
+    animation: creditGlow 3s infinite alternate;
+}
+
+@keyframes creditGlow{
+    from{ text-shadow:0 0 5px #fff; opacity:0.7; }
+    to{ text-shadow:0 0 20px #ff0; opacity:1; }
+}
+
+/* Gulal Particles */
+.particle{
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{transform:translateY(-50px);}
+    to{transform:translateY(110vh);}
+}
+
+/* Splash */
+.splash{
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    0%{transform:scale(0);opacity:1;}
+    100%{transform:scale(3);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌸 Happy Holi Harsh 🎉</h1>
+<div class="credit">✨ Created by Harsh Kumar🚀 ✨</div>
+
+<script>
+
+const colors=["#ff0","#f0f","#0ff","#ff5722","#4caf50","#2196f3"];
+
+/* Continuous Gulal Rain */
+for(let i=0;i<80;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.left=Math.random()*100+"vw";
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(Math.random()*6+3)+"s";
+    p.style.opacity=Math.random();
+    document.body.appendChild(p);
+}
+
+/* Auto Splash Every 1.5 sec */
+setInterval(()=>{
+    let splash=document.createElement("div");
+    splash.className="splash";
+    splash.style.left=Math.random()*window.innerWidth+"px";
+    splash.style.top=Math.random()*window.innerHeight+"px";
+    splash.style.background=colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(splash);
+    setTimeout(()=>splash.remove(),1000);
+},1500);
+
+</script>
+
+</body>
+</html>
